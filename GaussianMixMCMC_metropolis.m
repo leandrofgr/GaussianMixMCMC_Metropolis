@@ -11,7 +11,7 @@ n_facies = length(PRIOR);
 
 real_seismic  = real_seismic(1:end-1,:);
 
-G = elasticForwardModel(exp(PRIOR(1).MU(1))*ones(I,1), exp(PRIOR(1).MU(2))*ones(I,1), wavelet, theta,1);
+G = elasticForwardModel(exp(PRIOR(1).MU(1))*ones(I,1), exp(PRIOR(1).MU(2))*ones(I,1), wavelet, theta);
 
 %% Seismic noise covariance matrix 
 d = reshape(real_seismic,size(real_seismic,2)*size(real_seismic,1),1);

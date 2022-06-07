@@ -4,11 +4,11 @@ A = [];
 
     for i=1:length(theta)
 
-        a = ones(length(uVs),1)*0.5*(1 + tan(theta(i))^2);
-        b = -4*((uVs./uVp).^2)*sin(theta(i))^2;
+        a = ones(length(uVs),1)*0.5*(1 + tand(theta(i))^2);
+        b = -4*((uVs./uVp).^2)*sind(theta(i))^2;
         if nargin > 4
             % Fatti
-            c = - 0.5*(tan(theta(i)).^2 + b);  
+            c = - 0.5*(tand(theta(i)).^2 + b);  
         else
             % Aki & Richards
             c = 0.5*(1 + b);    

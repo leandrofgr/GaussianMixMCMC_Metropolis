@@ -3,7 +3,6 @@ addpath('.\functions\')
 load('.\data\data_synth_3layers_oil_water.mat')
 load('.\data\cmaps.mat')
 
-
 % Number of iterations
 n_it = 5000;
 
@@ -11,6 +10,8 @@ n_it = 5000;
 trace = 25;
 
 %% Input data
+real_seismic = real_seismic_aki; 
+
 SNR = 10;
 real_seismic(:,:,1) = real_seismic(:,:,1) + sqrt(mean(var(real_seismic(:,:,1)))/SNR)*noise_mean0_std1(:,:,1);
 real_seismic(:,:,2) = real_seismic(:,:,2) + sqrt(mean(var(real_seismic(:,:,2)))/SNR)*noise_mean0_std1(:,:,2);
@@ -25,13 +26,12 @@ real_log_rho = log(real_rho(1:end-1,trace));
 real_facies_well = real_facies(1:end-1,trace);
 
 I = size(real_log_vp,1);
-prob_map = ones(I,1,length(PRIOR_elastic))/length(PRIOR_elastic);
+prob_map = ones(I,1,length(PRIOR_elasticLog))/length(PRIOR_elasticLog);
 
 
 
 %% Input parameters
-
-SNR = 4;
+SNR = SNR;
 SNR_par = SNR*[1 1 1 1]
 
 % Transition matrix:
@@ -42,11 +42,11 @@ P = [0.90    0.055    0.035;
 PRIOR_ = PRIOR_elasticLog;
 
 
-[ INVERSION_noWind ] = GaussianMixMCMC_metropolis(real_seismic1d, theta, SNR_par, wavelet, PRIOR_, n_it, prob_map, P);
+[ INVERSION ] = GaussianMixMCMC_metropolis(real_seismic1d, theta, SNR_par, wavelet, PRIOR_, n_it, prob_map, P);
 
 
 %%   DISPLAY/SHOW RESULTS
-INVERSION_ =  INVERSION_noWind ;
+INVERSION_ =  INVERSION ;
 
 time_well = [2000:4:2000+(I-1)*4]';
 time_well_fine = [2000:2:2000+(I-1)*4+2]';
