@@ -37,7 +37,7 @@ SNR_par = SNR*[1 1 1 1]
 % Transition matrix:
 P = [0.90    0.055    0.035;
     0.20    0.8    0;
-    0.15    0.15    0.70];
+    0.2    0.2    0.60];
 
 PRIOR_ = PRIOR_elasticLog;
 
