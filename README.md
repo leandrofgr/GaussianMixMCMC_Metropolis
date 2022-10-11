@@ -1,4 +1,4 @@
-# Gaussian Mixture MCMC
+# Gaussian Mixture MCMC - Metropolis
 
 ### Gaussian mixture Markov chain Monte Carlo method for linear seismic inversion ###
 
