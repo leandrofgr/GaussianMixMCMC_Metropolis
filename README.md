@@ -9,6 +9,12 @@ https://doi.org/10.1190/geo2018-0529.1
 
 ![Example of the method outputs](git_figure.jpg)
 
+# Erratum on the article
+
+After a few months of publication we realized that p(d|π) is much simpler than what we have presented in the article. In the code of this repository, one can see how we actually p(d|π) use it in the algorithm.
+
+Because both distributions p(d|m) and p(m|π) are assumed to be Gaussians, p(d|π) is also a Gaussian distribution
+![Erratum on article](git_equation.jpg)
 
 ### Abstract ###
 
